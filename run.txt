@@ -1,0 +1,18 @@
+# <time> <PID> <action> <action> ...          
+# for each point in time a list of actions for the same process may be specified
+# possible entires for actions are: 
+#	S for start
+# 	E for end i.e. termination of the process, yielding in freeing all occupied frames
+#	<no> use of the page with the given number
+# file must be ordered by ascending time stamps
+10 1 S 
+12 1 R0 
+15 2 S
+17 2 R1 
+20 3 S 
+22 3 R3
+25 4 S
+27 4 R2
+28 4 W1
+30 5 S
+32 5 R4
