@@ -7,7 +7,8 @@
 unsigned emptyFrameCounter;		// number of empty Frames 
 frameList_t emptyFrameList = NULL;
 frameListEntry_t *emptyFrameListTail = NULL;
-//int pidArray[];
+
+int clockPointer = 0;
 
 /* ------------------------------------------------------------------------ */
 /*		               Declarations of local helper functions				*/
@@ -315,6 +316,8 @@ Boolean pageReplacement(unsigned *outPid, unsigned *outPage, int *outFrame)
 	}
 
 	Boolean replacementFound = FALSE;
+
+	/*
 	for (int i = 0; i < 4 && replacementFound == FALSE; i++) {
 		if (i == 0) {
 			printf("	-> Level 0: \n");
@@ -358,7 +361,22 @@ Boolean pageReplacement(unsigned *outPid, unsigned *outPage, int *outFrame)
 		}
 
 	}
-	
+	*/
+
+	while (pageReplacement == FALSE) {
+		if (clockPointer == MEMORYSIZE) clockPointer = 0;
+		if (memories[clockPointer].referenced == 0) {
+			frame = clockPointer;
+			clockPointer++;
+			replacementFound = TRUE;
+		}
+		else {
+			for (int i = 0; i < processTable[clockPointer + 1].size; i++) {
+				processTable[clockPointer + 1].pageTable[i].referenced = FALSE;
+			}
+			clockPointer++;
+		}
+	}
 
 	// As the initial implemetation does not have data structures that allows
 	// easy retrieval of the identity of a page residing in a given frame, 

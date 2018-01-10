@@ -50,9 +50,6 @@
     <ClCompile Include="main.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="memoryManagement.c">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="processcontrol.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -63,6 +60,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="core.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="memoryManagement.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
