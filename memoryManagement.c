@@ -363,7 +363,7 @@ Boolean pageReplacement(unsigned *outPid, unsigned *outPage, int *outFrame)
 	}
 	*/
 
-	while (pageReplacement == FALSE) {
+	while (replacementFound == FALSE) {
 		if (clockPointer == MEMORYSIZE) clockPointer = 0;
 		if (memories[clockPointer].referenced == 0) {
 			frame = clockPointer;
@@ -374,6 +374,7 @@ Boolean pageReplacement(unsigned *outPid, unsigned *outPage, int *outFrame)
 			for (int i = 0; i < processTable[clockPointer + 1].size; i++) {
 				processTable[clockPointer + 1].pageTable[i].referenced = FALSE;
 			}
+			memories[clockPointer].referenced = 0;
 			clockPointer++;
 		}
 	}
